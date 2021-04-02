@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\PractitionerController;
+use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ContentController;
 /*
 |--------------------------------------------------------------------------
@@ -26,11 +27,25 @@ Route::group(['middleware' => 'adminauth'], function () {
     Route::get('practitioners-edit',[PractitionerController::class, 'edit'])->name('practitionersEdit');
     Route::get('change-status',[PractitionerController::class, 'changeStatus'])->name('changeStatus');
     
+    Route::get('clients',[ClientController::class, 'index'])->name('adminClients');
+    Route::get('clients-data',[ClientController::class, 'data'])->name('clientsData');
+    Route::get('clients-edit',[ClientController::class, 'edit'])->name('clientsEdit');
+    
     //Content
+    //Practices
     Route::get('practices',[ContentController::class, 'indexPractices'])->name('adminPractices');
     Route::get('practices-data',[ContentController::class, 'dataPractices'])->name('adminDataPractices');
     Route::get('practices-publish',[ContentController::class, 'publishPractices'])->name('adminPracticesPublish');
     Route::get('practices-get',[ContentController::class, 'getPractices'])->name('adminPracticesGet');
+    Route::post('practices-save',[ContentController::class, 'savePractices'])->name('adminSavePractices');
+    Route::post('practices-remove',[ContentController::class, 'removePractices'])->name('adminRemovePractices');
+    //Specialities
+    Route::get('specialities',[ContentController::class, 'indexSpecialities'])->name('adminSpecialities');
+    Route::get('specialities-data',[ContentController::class, 'dataSpecialities'])->name('adminDataSpecialities');
+    Route::get('specialities-publish',[ContentController::class, 'publishSpecialities'])->name('adminSpecialitiesPublish');
+    Route::get('specialities-get',[ContentController::class, 'getSpecialities'])->name('adminSpecialitiesGet');
+    Route::post('specialities-save',[ContentController::class, 'saveSpecialities'])->name('adminSaveSpecialities');
+    Route::post('specialities-remove',[ContentController::class, 'removeSpecialities'])->name('adminRemoveSpecialities');
 
     // Admin profile
     Route::get('profile',[AdminController::class, 'profile'])->name('adminProfile');

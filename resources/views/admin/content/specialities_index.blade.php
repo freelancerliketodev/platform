@@ -4,12 +4,12 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Practices</h1>
+        <h1 class="h3 mb-0 text-gray-800">Specialities</h1>
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     </div>
     <!-- Modal -->
-    <!-- <button type="button" class="btn btn-info openPopup" data-toggle="modal" data-href="{{route('practitionersEdit')}}">Upload file</button> -->
+    <!-- <button type="button" class="btn btn-info openPopup" data-toggle="modal" data-href="">Upload file</button> -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <button class="btn btn-primary" id="add_item" type="button">Add</button>
@@ -49,7 +49,7 @@
                 "serverSide": true,
                 'searching': false,
                 "ajax": {
-                    "url": "{{ route('adminDataPractices') }}",
+                    "url": "{{ route('adminDataSpecialities') }}",
                     "data": function(data){
                         data['sort_field'] = data.columns[data.order[0].column].name;
                         data['sort_dir'] =  data.order[0].dir;
@@ -60,16 +60,16 @@
                     }
                 },
                 "columns": [
-                    { "data": 'id', 'name': 'practice.id',"orderable": false, "sClass": "content-middel",
+                    { "data": 'id', 'name': 'specialities.id',"orderable": false, "sClass": "content-middel",
                         render: function ( data, type, row, meta) {
                         return DataTypes.Checkbox.format(row);
                     }},
-                    { "data": "title", "name":'practice.title', "orderable": true },
+                    { "data": "title", "name":'specialities.title', "orderable": true },
                     { "data": "id", "name":'edit', "orderable": false, "sClass": "content-middel", 
 	            	    render: function ( data, type, row, meta) {
 	            	    return '<a href="javascript:;" edit_item_id="'+row.id+'" class="btn btn-success item_edit btn-sm btn-circle"><i class="fas fa-edit"></i></a>';
 	                }},
-                    { "data": "published", "name":'practice.published', "orderable": true, "sClass": "content-middel", 
+                    { "data": "published", "name":'specialities.published', "orderable": true, "sClass": "content-middel", 
                         render: function ( data, type, row, meta) {
                         return DataTypes.Published.format(data,row);
                     }}
@@ -98,15 +98,15 @@
 
             $('#dataTable').on('click', '.item_edit', function (e) {
                 editId = $(this).attr('edit_item_id');
-                itemPopup.setTitle('Edit practices');
-                itemPopup.load("{{route('adminPracticesGet')}}?id="+editId, function () {
+                itemPopup.setTitle('Edit speciality');
+                itemPopup.load("{{route('adminSpecialitiesGet')}}?id="+editId, function () {
                     this.open();
                 });
             });
             
             $('#add_item').click(function() {
-                itemPopup.setTitle('Add practices');
-                itemPopup.load("{{route('adminPracticesGet')}}", function () {
+                itemPopup.setTitle('Add speciality');
+                itemPopup.load("{{route('adminSpecialitiesGet')}}", function () {
                     this.open();
                 });
             });
@@ -124,7 +124,7 @@
                 var $item = $(this);
                 $.ajax({
                     type: "GET",
-                    url: "{{route('adminPracticesPublish')}}",
+                    url: "{{route('adminSpecialitiesPublish')}}",
                     dataType: 'JSON',
                     data:{_token: "<?php echo csrf_token(); ?>", pubItemId:pubItemId},
                     success: function(response){
@@ -157,7 +157,7 @@
                         if(result){
                             $.ajax({
                             type: "POST",
-                            url: "{{route('adminRemovePractices')}}",
+                            url: "{{route('adminRemoveSpecialities')}}",
                             dataType: 'JSON',
                             data:{_token: "<?php echo csrf_token(); ?>", ids:ids},
                                 success: function(response){

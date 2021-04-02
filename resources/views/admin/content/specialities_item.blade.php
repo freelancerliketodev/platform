@@ -40,7 +40,7 @@
             
             $.ajax({
                 type: "POST",
-                url: "{{route('adminSavePractices')}}",
+                url: "{{route('adminSaveSpecialities')}}",
                 data: data,
                 dataType: 'json',
                 success: function(response){

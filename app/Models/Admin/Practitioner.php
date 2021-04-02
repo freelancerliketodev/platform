@@ -61,7 +61,7 @@ class Practitioner extends Model
 
 		// Get Main profile data
 		$query->select('practitioner.id as id','first_name','last_name','time_zone as time_zone','phone_number','email','status','practitioner.rate as rate',
-						'created_at','price_selection','mode_of_delivery','gender','status','description',
+						'created_at','price_selection','mode_of_delivery','gender','description',
 						'countries.title as country','cities.title as city',
 						'specialities.title as speciality',
 						'practice.title as practice'
