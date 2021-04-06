@@ -43,7 +43,7 @@ class Client extends Model
 
 		// Get Main profile data
 		$query->select('users.id as id','first_name','last_name','phone_number','email',
-						'created_at','gender');
+						'created_at','gender','created_at');
 		$query->where('users.id',$id);
 		
 		$data = $query->first();
@@ -65,10 +65,6 @@ class Client extends Model
 		}
 		$data->languages = $languages;
 		//
-
-		// Get reviews
-		// $reviews = DB::table('reviews')->select('*')->where('practitoner_id',$id)->get();
-		// $data->reviews = $reviews;
 
 		return $data;
 	}

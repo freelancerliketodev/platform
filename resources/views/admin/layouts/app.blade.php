@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <meta name="_token" content="{{ csrf_token() }}"/>
+    
     <title>Admin - Dashboard</title>
 
     <!-- Custom fonts for this template-->
@@ -68,17 +69,20 @@
             <div class="sidebar-heading">
                 Content
             </div>
-
-            <li class="nav-item @if(isset($menu) && $menu == 'practices') active @endif">
-                <a class="nav-link" href="{{ route('adminPractices') }}">
-                    <i class="fas fa-newspaper"></i>
-                    <span>Practices</span></a>
-            </li>
-
-            <li class="nav-item @if(isset($menu) && $menu == 'specialities') active @endif">
-                <a class="nav-link" href="{{ route('adminSpecialities') }}">
-                    <i class="fas fa-newspaper"></i>
-                    <span>Specialities</span></a>
+            <?php $contentMenuItems = array('practices','specialities','blog'); ?>
+            <li class="nav-item @if(isset($menu) && in_array($menu,$contentMenuItems)) active @endif">
+                <a class="nav-link @if(!isset($menu) && !in_array($menu,$contentMenuItems)) collapsed @endif" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Content</span>
+                </a>
+                <div id="collapseTwo" class="collapse @if(isset($menu) && in_array($menu,$contentMenuItems)) active @endif"" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a  class="collapse-item @if(isset($menu) && ($menu == 'blog')) active @endif" href="{{ route('adminBlog') }}">Blog</a>
+                        <a  class="collapse-item @if(isset($menu) && ($menu == 'practices')) active @endif" href="{{ route('adminPractices') }}">Practices</a>
+                        <a  class="collapse-item @if(isset($menu) && ($menu == 'specialities')) active @endif" href="{{ route('adminSpecialities') }}">Specialities</a>
+                    </div>
+                </div>
             </li>
 
             
@@ -217,6 +221,7 @@
     <script src="/backend/vendor/bootstrap-toastr/toastr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
     <script src="/backend/vendor/popup.js"></script>
+    <script src="/backend/vendor/simpleUpload.min.js"></script>
     <script src="/backend/js/script.js"></script>
 
     @stack('script')

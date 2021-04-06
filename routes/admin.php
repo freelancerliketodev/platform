@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\PractitionerController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ContentController;
+use App\Http\Controllers\Admin\ImageController;
+
 /*
 |--------------------------------------------------------------------------
 | Admin Routes
@@ -46,9 +48,19 @@ Route::group(['middleware' => 'adminauth'], function () {
     Route::get('specialities-get',[ContentController::class, 'getSpecialities'])->name('adminSpecialitiesGet');
     Route::post('specialities-save',[ContentController::class, 'saveSpecialities'])->name('adminSaveSpecialities');
     Route::post('specialities-remove',[ContentController::class, 'removeSpecialities'])->name('adminRemoveSpecialities');
+    //Blog
+    Route::get('blog',[ContentController::class, 'indexBlog'])->name('adminBlog');
+    Route::get('blog-data',[ContentController::class, 'dataBlog'])->name('adminBlogData');
+    Route::get('blog-publish',[ContentController::class, 'publishBlog'])->name('adminBlogPublish');
+    Route::get('blog-get',[ContentController::class, 'getBlog'])->name('adminBlogGet');
+    Route::post('blog-save',[ContentController::class, 'saveBlog'])->name('adminBlogSave');
+    Route::post('blog-remove',[ContentController::class, 'removeBlog'])->name('adminBlogRemove');
 
     // Admin profile
     Route::get('profile',[AdminController::class, 'profile'])->name('adminProfile');
     Route::post('save-profile',[AuthController::class, 'saveProfile'])->name('adminSaveProfile'); 
     Route::post('change-password',[AuthController::class, 'changePassword'])->name('adminChangePassword');
+    
+    Route::post('upload',[ImageController::class, 'upload'])->name('adminUploadImage');
+    Route::post('remove',[ImageController::class, 'remove'])->name('adminRemoveImage');
 });

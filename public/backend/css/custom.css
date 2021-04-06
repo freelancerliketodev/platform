@@ -56,3 +56,28 @@ a.loading:before, span.loading:before, button.loading:before, a.loading:hover:be
     height: 15px;
     width: 15px;
 }
+
+.image-upload-container .image-part{
+	width: 100px; 
+	height: 100px;
+	margin-bottom: 20px;
+}
+.image-upload-container .fileNotExist .img-exist{
+	display: none;
+}
+.image-upload-container .fileExist .img-not-exist{
+	display: none;
+}
+.image-upload-container .thumbnail{
+    display: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+
+}

@@ -94,7 +94,7 @@
             // Edit modal
             var itemPopup = new Popup;
                 itemPopup.init({
-                    size:'modal-xl',
+                    size:'modal-lg',
                     identifier:'add-item',
                     minHeight: '200',
                 })
