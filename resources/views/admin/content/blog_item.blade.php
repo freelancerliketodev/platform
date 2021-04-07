@@ -51,7 +51,18 @@
                             </select>
                         </span>
                     </div>
-                    <div class="my-2"></div>   
+                    <div class="my-2"></div>
+                    <div class="form-group">
+                        <span >Description:
+                            <textarea id="" name="description" class="form-control mytextarea" rows="4" cols="50">{{$item->description}}</textarea>
+                        </span>
+                    </div>
+                    <div class="my-2"></div>
+                    <div class="form-group">
+                        <span >Text:
+                            <textarea id="" name="text" class="form-control mytextarea" rows="4" cols="50">{{$item->text}}</textarea>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -64,6 +75,8 @@
 <script>
 function save(){
     Loading.add($('#saveItemBtn'));
+    tinymce.triggerSave();
+    tinymce.remove('.mytextarea');
 
     var data = $('#save-item-form').serializeFormJSON();
     
@@ -77,6 +90,7 @@ function save(){
                 toastr['error'](response.message, 'Error');
             }
             if(response.status == 1){
+                tinymce.execCommand('mceRemoveControl', true, '.mytextarea');
                 toastr['success']('Saved.', 'Success');
                 @if($mode == 'add') dataTable.ajax.reload(); @else dataTable.ajax.reload(null, false); @endif
                 itemPopup.close();
@@ -86,6 +100,15 @@ function save(){
     });  
 }
 $(document).ready(function(){
+
+      tinymce.init({
+        selector: '.mytextarea',
+        height: 400,
+      });
+
+    //   $('.modal#add-item').on('hide.bs.modal', function (e) {
+    //     tinymce.execCommand('mceRemoveControl', true, '.mytextarea');
+    //   })
 
     $('input[type=file]').change(function(){
 

@@ -41,6 +41,7 @@
     <script src="/backend/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="/backend/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <script src="/backend/vendor/datatables/datatable.types.js"></script>
+    <script src="/backend/vendor/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         $(document).ready(function() {
             // Init table
@@ -92,6 +93,7 @@
             itemPopup.init({
                 size:'modal-xl',
                 identifier:'add-item',
+                class: 'modal',
                 minHeight: '200',
             })
             window.itemPopup = itemPopup;

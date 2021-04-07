@@ -286,6 +286,8 @@ class ContentController extends Controller
         }
 
         $item->title = $request['title'];
+        $item->description = $request['description'];
+        $item->text = $request['text'];
         $item->published = (int)$request['published'];
         $item->save();
         return json_encode(array('status' => 1));
@@ -296,6 +298,13 @@ class ContentController extends Controller
         foreach ($ids as $id) {
             $item = Blog::find($id);
             if($item){
+                if($item->image_id ){
+                    $image = ImageDB::find($item->image_id);
+                    if($item->image_id){
+                        $image->remove($item->image_id);
+                    }
+                }
+
                 $item->delete();
             }else{
                 return json_encode(array('status' => 0, 'message' => "Can't remove"));
