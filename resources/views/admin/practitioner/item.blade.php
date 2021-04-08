@@ -59,6 +59,41 @@
             </div>
         </div>
     </div>
+    <div class="col-lg-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Services</h6>
+            </div>
+            <div class="card-body fixed-height">
+                @isset($profile->services)
+                <div class="row">
+                    @foreach($profile->services as $service)
+                        <div class="service_container col-lg-4">
+                            <span class="service_title">{{$service['title']}}</span>
+                            @isset($profile->services)
+                                <div class="service_sessions">
+                                    @foreach($service['session'] as $session)
+                                        <span>{{$session}}</span>
+                                    @endforeach
+                                </div>
+                            @endisset
+                            <div class="service_price">
+                                {{$service['price']}}
+                            </div>
+                            @isset($profile->services)
+                                <ul class="service_points">
+                                    @foreach($service['points'] as $point)
+                                        <li>{{$point}}</li>
+                                    @endforeach
+                                </ul>
+                            @endisset
+                        </div>
+                    @endforeach
+                </div>
+                @endisset
+            </div>
+        </div>
+    </div>
     <div class="col-lg-6">
         <div class="card shadow mb-4">
             <div class="card-header py-3">

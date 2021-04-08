@@ -79,5 +79,25 @@ a.loading:before, span.loading:before, button.loading:before, a.loading:hover:be
     -webkit-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
+}
 
+.service_container{
+    padding: 5px;
+}
+.service_sessions span, .service_title, .service_points span{
+    display: block;
+}
+.service_title, .service_price{
+    font-weight: bold;
+}
+.service_container .service_sessions, .service_container .service_price, .service_title{
+    text-align: center;
+}
+
+ul.service_points {
+    list-style: none;
+}
+ul.service_points li:before {
+    content: '✓';
+    margin-right: 10px;
 }

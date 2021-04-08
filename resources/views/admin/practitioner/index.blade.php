@@ -8,6 +8,7 @@
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     </div>
+    
     <!-- Modal -->
     <!-- <button type="button" class="btn btn-info openPopup" data-toggle="modal" data-href="{{route('practitionersEdit')}}">Upload file</button> -->
     <div class="card shadow mb-4">

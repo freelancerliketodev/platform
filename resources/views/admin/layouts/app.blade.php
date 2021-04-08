@@ -71,12 +71,12 @@
             </div>
             <?php $contentMenuItems = array('practices','specialities','blog'); ?>
             <li class="nav-item @if(isset($menu) && in_array($menu,$contentMenuItems)) active @endif">
-                <a class="nav-link @if(!isset($menu) && !in_array($menu,$contentMenuItems)) collapsed @endif" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                <a class="nav-link @if(isset($menu) && !in_array($menu,$contentMenuItems)) collapsed @endif" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Content</span>
                 </a>
-                <div id="collapseTwo" class="collapse @if(isset($menu) && in_array($menu,$contentMenuItems)) active @endif"" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse @if(isset($menu) && in_array($menu,$contentMenuItems)) active show @endif"" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a  class="collapse-item @if(isset($menu) && ($menu == 'blog')) active @endif" href="{{ route('adminBlog') }}">Blog</a>
                         <a  class="collapse-item @if(isset($menu) && ($menu == 'practices')) active @endif" href="{{ route('adminPractices') }}">Practices</a>
