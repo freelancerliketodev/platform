@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\WelcomeController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PractitionerController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [WelcomeController::class, 'homepage'])->name('homepage');
 
+// Practitioner
+Route::get('/practitioner/set-working-time', [PractitionerController::class, 'setWorkingTime'])->name('setWorkingTime');
 
 Route::get('/clear', function() {
     Artisan::call('cache:clear');
